@@ -1,0 +1,124 @@
+/* ドロップゾーン */
+.dragArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    border-color: #0077cc;
+  }
+
+  em {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #999;
+  }
+}
+
+/* 選択されたPDFファイル */
+.selectedFile {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #0077cc;
+  text-align: center;
+}
+
+/* アップロードボタン */
+.uploadBtn {
+  display: block;
+  padding: 10px 20px;
+  margin: 20px auto;
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #005fa3;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.questionForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.questionBox {
+  display: flex;
+  position: relative;
+  align-items: center;
+  border: none;
+  height: 62px;
+  width: 600px;
+  max-width: 100%;
+}
+
+.questionInput[type="text"] {
+  padding: 20px 80px 20px 24px;
+  border: 2px solid #0077cc;
+  font-size: 16px;
+  border-radius: 31px;
+  width: 100%;
+}
+
+.questionSendButton[type="submit"] {
+  position: absolute;
+  right: 10px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #0077cc;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  height: 40px;
+  width: 80px;
+  border-radius: 25px;
+  margin-right: 10px;
+}
+
+.questionSendButton[type="submit"]:hover {
+  background-color: #005fa3;
+}
+
+.question {
+  background-color: #dcdcdc;
+  width: 600px;
+  padding: 24px 32px;
+  margin: 20px 0 20px 40px;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.answer {
+  background-color: #0077cc;
+  color: white;
+  width: 600px;
+  padding: 24px 32px;
+  margin: 0 40px 0 auto;
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 1.5rem;
+}
