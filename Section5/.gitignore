@@ -1,4 +1,4 @@
 .env
 uploads/*
 vectorestore/*
-__pycache__/*
+__pycache__
