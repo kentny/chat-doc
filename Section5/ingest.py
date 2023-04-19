@@ -1,3 +1,5 @@
+import os
+import shutil
 from langchain.document_loaders import PyPDFLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
@@ -20,5 +22,12 @@ def ingest(file_path: str):
 
     embeddings = OpenAIEmbeddings()
     
+    # Delete the existing database in vectorestore_chroma_path.
+    if os.path.exists(vectorestore_chroma_path):
+        shutil.rmtree(vectorestore_chroma_path)
+        print("The database has been deleted.")
+    else:
+        print("The database does not exist.")
+
     vectordb = Chroma.from_documents(docs, embeddings, persist_directory=vectorestore_chroma_path)
     vectordb.persist()

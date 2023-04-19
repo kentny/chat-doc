@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -16,6 +17,8 @@ def upload_pdf():
     if not pdf_file.filename.endswith(".pdf"):
         return {"error": "Invalid file type"}, 400
     
+    if not os.path.exists("./uploads"):
+        os.makedirs("./uploads")
     pdf_file.save('./uploads/' + pdf_file.filename)
 
     ingest('./uploads/' + pdf_file.filename)

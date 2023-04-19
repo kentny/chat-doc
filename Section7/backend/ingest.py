@@ -1,3 +1,5 @@
+import os
+import shutil
 from typing import List
 from langchain import PromptTemplate
 from langchain.chains.question_answering import load_qa_chain
@@ -36,12 +38,22 @@ def ingest(file_path: str):
     #     collection_name=vectorestore_qdrant_collection_name,
     # )
     
+    # Delete the existing database in vectorestore_chroma_path.
+    if os.path.exists(vectorestore_chroma_path):
+        shutil.rmtree(vectorestore_chroma_path)
+        print("The database has been deleted.")
+    else:
+        print("The database does not exist.")
+
     vectordb = Chroma.from_documents(docs, embeddings, persist_directory=vectorestore_chroma_path)
     vectordb.persist()
 
 
 def generate_answer(query: str) -> str:
     docs = _similarity_search(query)
+    for doc in docs:
+        print(doc)
+        print('======================')
     template = """Use the following pieces of context to answer the question at the end. 
     If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
